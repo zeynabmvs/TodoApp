@@ -17,10 +17,64 @@
 
     &__tasks {
 
+        .task_item {
+            display: flex;
+            align-items: center;
+            background-color: var(--task-bg);
+            border-bottom: 1px solid var(--very-dark-grayish-blue);
+            padding: rem(15) rem(20);
+            color: var(--text-active);
+            
+            p {
+
+            }
+
+            button {
+                float: right;
+                margin-left: auto;
+            }
+        }
+        
+        #add_task {
+            margin-bottom: rem(15);
+            border-radius: rem(4);
+            border: none;
+
+            input[type="text"] {
+                // height: rem(50);
+                width: 100%;
+                background-color: var(--task-bg);
+                color: var(--text-active);
+                font-family: inherit;
+                // padding-left: rem(25);
+                font-size: inherit;
+
+            }
+        }
+
+
     }
 
     &__footer {
+        height: rem(50);
+        background-color: var(--task-bg);
+        font-size: rem(17);
+        font-family: inherit;
+        padding: 0 rem(20);
+        color: var(--text-inactive);
+        
+        span {
+            font-size: rem(13);
 
+        }
+
+        a {
+            color: var(--text-inactive);
+
+            &:hover {
+                color: var(--text-active);
+            }
+        }
     }
 
 }
