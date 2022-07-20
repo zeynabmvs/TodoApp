@@ -1,0 +1,26 @@
+@use '../util' as *;
+
+.app {
+    position: absolute;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	width: 90%;
+    
+    @include breakpoint(medium) {
+        width: 40%;
+    }
+
+    &__header {
+
+    }
+
+    &__tasks {
+
+    }
+
+    &__footer {
+
+    }
+
+}

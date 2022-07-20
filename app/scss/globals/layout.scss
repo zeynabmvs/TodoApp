@@ -4,3 +4,17 @@
 	padding: 0 rem(60);
 	max-width: rem(1110);
 }
+
+.main {
+	height: 100vh; //better solution?
+	position: relative;
+	background-color: var(--background);
+	background-image: url('/images/bg-mobile-dark.jpg');
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 100% 33%;
+
+	@include breakpoint(medium) {
+		background-image: url('/images/bg-desktop-dark.jpg');
+	}
+}

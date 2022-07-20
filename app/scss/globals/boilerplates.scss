@@ -42,6 +42,10 @@ ul {
     align-items: center;
   }
 
+  &-ai-b {
+    align-items: baseline;
+  }
+
   &-d-c {
     flex-direction: column;
   }
@@ -81,4 +85,26 @@ ul {
 button {
   padding: 0;
   margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+input[type=text] {
+  border: none;
+  border-radius: 0;
+  outline: none;
+
+  @include breakpoint(medium) {}
+
+  &::placeholder {
+    // color: var(--task-text);
+    // opacity: 80%;
+    // font-family: var(--font-josefin);
+  }
+
+  &:focus {
+    border: none;
+  }
+
 }

@@ -24,17 +24,37 @@
 </head>
 <body>
 
-  Todo
+  <main class="main">
+    
+    <section class="app">
+      
+      <div class="app__header flex flex-d-r flex-jc-sb flex-ai-b">
+        <h1>TODO</h1>
+        <button class="toggle"><img src="/images/icon-sun.svg" alt="Toggle button"></button>
+      </div>
 
-  <!-- Add dynamic number --> items left
+      <div class="app__tasks">
+        <div id="add_task">
+            <input type="checkbox" name="checkbox-disabled" disabled />
+            <input type="text" name="new_task" placeholder="Create a new todo...">
+        </div>
 
-  All
-  Active 
-  Completed
+        <div class="all_tasks">
 
-  Clear Completed
+        </div>
 
-  Drag and drop to reorder list
+      </div>
+
+      <div class="app__footer">
+        <span>5 Items left</span>
+        <div class="filter_by">
+
+        </div>
+        <button>Clear Completed</button>
+      </div>
+    </section>
+
+  </main>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
