@@ -1,5 +1,7 @@
 @use '../util' as *;
 
+// default background image is light background, if user has a prefer color scheme 
+// and it is dark the query below will set the background image to dark background
 :root {
 	--background-img: url('/images/bg-mobile-light.jpg');
 }
