@@ -34,21 +34,21 @@
       </div>
 
       <div class="app__tasks">
-        <div id="add_task" class="task_item task_item--disabled">
+        <div id="add_task" class="task_item">
             <input type="checkbox" name="checkbox-disabled" disabled />
             <input type="text" name="new_task" placeholder="Create a new todo...">
         </div>
 
         <div class="all_tasks">
-          <div class="task_item">
-            <input type="checkbox" name="checkbox-active" />
+          <div class="task_item completed">
+            <input type="checkbox" name="checkbox-active"/>
             <p>Complete Online JavaScript Course</p>
-            <button><img src="/images/icon-cross.svg" alt="Delete task"></button>
+            <button class="delete_task"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
           <div class="task_item">
             <input class="checkbox" type="checkbox" name="checkbox-active" />
             <p>jog around the park 3x</p>
-            <button><img src="/images/icon-cross.svg" alt="Delete task"></button>
+            <button class="delete_task"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
         </div>
 
@@ -63,6 +63,8 @@
         </div>
         <a href="#">Clear Completed</a>
       </div>
+
+      <p class="tip">Drag and drop to reorder list</p>
     </section>
 
   </main>

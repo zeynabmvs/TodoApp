@@ -25,14 +25,24 @@
             padding: rem(15) rem(20);
             color: var(--text-active);
             
+            &.completed {
+                text-decoration: line-through;
+                color: var(--text-inactive);
+            }
+
             p {
 
             }
 
-            button {
+            .delete_task {
                 float: right;
                 margin-left: auto;
+
+                @include breakpoint(medium) {
+                    display: none;
+                }
             }
+            
         }
         
         #add_task {
@@ -75,6 +85,13 @@
                 color: var(--text-active);
             }
         }
+    }
+
+    .tip {
+        text-align: center;
+        color: var(--text-inactive);
+        margin-top: rem(50);
+
     }
 
 }
