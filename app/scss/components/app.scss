@@ -2,9 +2,7 @@
 
 .app {
     position: absolute;
-    top: 27%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: rem(100);
 	width: 90%;
     
     @include breakpoint(medium) {
@@ -21,7 +19,7 @@
             display: flex;
             align-items: center;
             background-color: var(--task-bg);
-            border-bottom: 1px solid var(--very-dark-grayish-blue);
+            border-bottom: 1px solid var(--task-border);
             padding: rem(15) rem(20);
             color: var(--text-active);
             

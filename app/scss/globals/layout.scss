@@ -1,5 +1,15 @@
 @use '../util' as *;
 
+:root {
+	--background-img: url('/images/bg-mobile-light.jpg');
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-img: url('/images/bg-mobile-dark.jpg');
+	}
+}
+
 .container {
 	padding: 0 rem(60);
 	max-width: rem(1110);
@@ -9,10 +19,13 @@
 	height: 100vh; //better solution?
 	position: relative;
 	background-color: var(--background);
-	background-image: url('/images/bg-mobile-dark.jpg');
+	background-image: var(--background-img);
 	background-position: top;
 	background-repeat: no-repeat;
 	background-size: 100% 33%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 
 	@include breakpoint(medium) {
 		background-image: url('/images/bg-desktop-dark.jpg');
