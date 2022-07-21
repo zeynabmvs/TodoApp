@@ -1,0 +1,12 @@
+:root {
+    --border-radius-size: 0.25rem;
+	--background-img-mobile: url('/images/bg-mobile-light.jpg');
+	--background-img-desktop: url('/images/bg-desktop-light.jpg');
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-img-mobile: url('/images/bg-mobile-dark.jpg');
+        --background-img-desktop: url('/images/bg-desktop-dark.jpg');
+	}
+}

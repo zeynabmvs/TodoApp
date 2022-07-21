@@ -108,3 +108,16 @@ input[type=text] {
   }
 
 }
+
+
+.border {
+
+  &-r-all {
+      border-radius: var(--border-radius-size);
+  }
+
+  &-r-bottom {
+      border-bottom-left-radius: var(--border-radius-size);
+      border-bottom-right-radius: var(--border-radius-size);
+  }
+}

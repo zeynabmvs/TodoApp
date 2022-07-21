@@ -10,11 +10,11 @@ input[type="checkbox"] {
     border: rem(1) solid var(--text-inactive);
     border-radius: 50%;
     transform: translateY(-0.075em);
-
+    cursor: pointer;
     display: grid;
     place-content: center;
     margin-right: rem(20);
-
+    
     &:checked {
         background-image: linear-gradient(125deg, var(--checkbackground-start), var(--checkbackground-end));
 

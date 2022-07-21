@@ -3,36 +3,40 @@
 .app {
     position: absolute;
     margin-top: rem(100);
-	width: 90%;
-    
+    width: 90%;
+
     @include breakpoint(medium) {
         width: 40%;
     }
 
-    &__header {
+    &__header {}
 
+    .item {
+        display: flex;
+        align-items: center;
+        background-color: var(--task-bg);
+        padding: rem(15) rem(20);
     }
 
     &__tasks {
 
-        .task_item {
-            display: flex;
-            align-items: center;
-            background-color: var(--task-bg);
+        .task {
             border-bottom: 1px solid var(--task-border);
-            padding: rem(15) rem(20);
-            color: var(--text-active);
-            
+
+            &.active {
+                color: var(--text-active);
+            }
+
             &.completed {
                 text-decoration: line-through;
                 color: var(--text-inactive);
             }
 
-            p {
-
+            P {
+                cursor: pointer;
             }
 
-            .delete_task {
+            .delete_btn {
                 float: right;
                 margin-left: auto;
 
@@ -40,13 +44,12 @@
                     display: none;
                 }
             }
-            
+
         }
-        
+
         #add_task {
             margin-bottom: rem(15);
-            border-radius: rem(4);
-            border: none;
+
 
             input[type="text"] {
                 // height: rem(50);
@@ -70,13 +73,13 @@
         font-family: inherit;
         padding: 0 rem(20);
         color: var(--text-inactive);
-        
-        span {
-            font-size: rem(13);
+        margin-bottom: rem(15);
 
+        .items_count {
+            font-size: rem(13);
         }
 
-        a {
+        .clear_btn {
             color: var(--text-inactive);
 
             &:hover {
@@ -84,6 +87,24 @@
             }
         }
     }
+    .filters {
+        a {
+            color: var(--text-inactive);
+
+            &:hover {
+                color: var(--text-active);
+            }
+
+            &:nth-of-type(1){
+                color: var(--bright-blue)
+            }
+
+            &:not(:last-child) {
+                margin-right: rem(15);
+            }
+        }
+    }
+
 
     .tip {
         text-align: center;

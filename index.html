@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+
   <!-- Fonts google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,16 +20,23 @@
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
   </style>
 </head>
+
 <body>
 
   <main class="main">
-    
+
     <section class="app">
-      
+
       <div class="app__header flex flex-d-r flex-jc-sb flex-ai-b">
         <h1>TODO</h1>
         <button class="toggle"><img src="/images/icon-moon.svg" alt="Toggle to dark mode"></button>
@@ -35,34 +44,35 @@
       </div>
 
       <div class="app__tasks">
-        <div id="add_task" class="task_item">
-            <input type="checkbox" name="checkbox-disabled" disabled />
-            <input type="text" name="new_task" placeholder="Create a new todo...">
+        <div id="add_task" class="item border-r-all">
+          <input type="checkbox" name="checkbox-disabled" disabled />
+          <input type="text" name="new_task" placeholder="Create a new todo...">
         </div>
 
         <div class="all_tasks">
-          <div class="task_item completed">
-            <input type="checkbox" name="checkbox-active"/>
+          <div class="task item completed">
+            <input type="checkbox" name="checkbox-active" />
             <p>Complete Online JavaScript Course</p>
-            <button class="delete_task"><img src="/images/icon-cross.svg" alt="Delete task"></button>
+            <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
-          <div class="task_item">
+          <div class="task item active">
             <input class="checkbox" type="checkbox" name="checkbox-active" />
             <p>jog around the park 3x</p>
-            <button class="delete_task"><img src="/images/icon-cross.svg" alt="Delete task"></button>
+            <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
         </div>
 
       </div>
 
-      <div class="app__footer flex flex-d-r flex-jc-sb flex-ai-c">
-        <span>5 Items left</span>
-        <div class="filter_by">
-          <a href="#">All</a>
-          <a href="#">Active</a>
-          <a href="#">Completed</a>
-        </div>
-        <a href="#">Clear Completed</a>
+      <div class="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
+        <span class="items_count">5 Items left</span>
+        <a href="#" class="clear_btn">Clear Completed</a>
+      </div>
+
+      <div class="filters item border-r-all flex flex-jc-c">
+        <a href="#">All</a>
+        <a href="#">Active</a>
+        <a href="#">Completed</a>
       </div>
 
       <p class="tip">Drag and drop to reorder list</p>
@@ -71,10 +81,11 @@
   </main>
 
   <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://github.com/zeynabmvs" target="_blank" rel="noopener">Zeynab</a>.  
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/zeynabmvs" target="_blank" rel="noopener">Zeynab</a>.
   </div>
 
   <script src="/app/js/script.js"></script>
 </body>
+
 </html>
