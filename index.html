@@ -50,14 +50,24 @@
         </div>
 
         <div class="all_tasks">
-          <div class="task item completed">
-            <input type="checkbox" name="checkbox-active" />
-            <p>Complete Online JavaScript Course</p>
+          <div class="task item checked">
+            <input class="checkbox" type="checkbox" maxlength="200"/>
+            <p>Complete Online JavaScript Course and Do the homeworks afterwards, This is a long task I need it to be even longer</p>
             <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
           <div class="task item active">
-            <input class="checkbox" type="checkbox" name="checkbox-active" />
+            <input class="checkbox" type="checkbox" maxlength="200"/>
             <p>jog around the park 3x</p>
+            <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
+          </div>
+          <div class="task item checked">
+            <input class="checkbox" type="checkbox" maxlength="200"/>
+            <p>10 minutes meditation</p>
+            <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
+          </div>
+          <div class="task item active">
+            <input class="checkbox" type="checkbox" maxlength="200"/>
+            <p>Read for 1 Hour</p>
             <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
         </div>
@@ -65,14 +75,14 @@
       </div>
 
       <div class="app__footer item flex flex-d-r flex-jc-sb flex-ai-c border-r-bottom">
-        <span class="items_count">5 Items left</span>
+        <span class="items_count"></span>
         <a href="#" class="clear_btn">Clear Completed</a>
       </div>
 
       <div class="filters item border-r-all flex flex-jc-c">
-        <a href="#">All</a>
-        <a href="#">Active</a>
-        <a href="#">Completed</a>
+        <a href="#" id="showAll">All</a>
+        <a href="#" id="showActive">Active</a>
+        <a href="#" id="showCompleted">Completed</a>
       </div>
 
       <p class="tip">Drag and drop to reorder list</p>
@@ -84,7 +94,7 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="https://github.com/zeynabmvs" target="_blank" rel="noopener">Zeynab</a>.
   </div>
-
+  <script src="/app/js/jquery-3.6.0.min.js"></script>
   <script src="/app/js/script.js"></script>
 </body>
 

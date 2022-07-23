@@ -14,6 +14,7 @@ input[type="checkbox"] {
     display: grid;
     place-content: center;
     margin-right: rem(20);
+    flex-shrink: 0;
     
     &:checked {
         background-image: linear-gradient(125deg, var(--checkbackground-start), var(--checkbackground-end));

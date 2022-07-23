@@ -15,25 +15,30 @@
         display: flex;
         align-items: center;
         background-color: var(--task-bg);
-        padding: rem(15) rem(20);
+        padding: rem(5) rem(20);
+        min-height: rem(50);
     }
 
     &__tasks {
+        cursor: pointer;
 
         .task {
             border-bottom: 1px solid var(--task-border);
+            color: var(--text-active);
 
-            &.active {
-                color: var(--text-active);
+            &:hover {
+                .delete_btn {
+                    opacity: 1;
+                }
             }
 
-            &.completed {
+            &.checked {
                 text-decoration: line-through;
                 color: var(--text-inactive);
             }
 
-            P {
-                cursor: pointer;
+            p {
+                flex-grow: 1;
             }
 
             .delete_btn {
@@ -41,7 +46,7 @@
                 margin-left: auto;
 
                 @include breakpoint(medium) {
-                    display: none;
+                    opacity: 0;
                 }
             }
 
@@ -52,12 +57,10 @@
 
 
             input[type="text"] {
-                // height: rem(50);
                 width: 100%;
                 background-color: var(--task-bg);
                 color: var(--text-active);
                 font-family: inherit;
-                // padding-left: rem(25);
                 font-size: inherit;
 
             }

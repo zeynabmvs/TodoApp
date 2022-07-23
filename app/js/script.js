@@ -1,50 +1,79 @@
 console.log("hello from script.js");
 
-// Header open and close hamburgur menu
-const btnHamburgur = document.querySelector('#jsbtnHamburgur')
-const header = document.querySelector('.header')
-const fadeElems = document.querySelectorAll('.has-fade')
-const body = document.querySelector('body')
-const logo = document.querySelector('.header__logo')
+updateCount();
 
-btnHamburgur.addEventListener('click', function(){ 
-    console.log(fadeElems)
-    
-    if(header.classList.contains('open')){ // Close hamburgur menu
-        body.classList.remove('noscroll')
-        header.classList.remove('open')
-        logo.classList.remove('visually-hidden')
-        fadeElems.forEach(function(element){
-            element.classList.remove('fade-in')
-            element.classList.add('fade-out')
-        });
-    } 
-    else { // Open hamburgur menu
-        body.classList.add('noscroll')
-        header.classList.add('open') 
-        logo.classList.add('visually-hidden')
-        fadeElems.forEach(function(element){
-            element.classList.remove('fade-out')
-            element.classList.add('fade-in')
-            
-        });
-    } 
-})
+// Function to count uncompleted items
+function updateCount(jQuery) {
+    let count = $(".all_tasks .active").length;
+    $(".items_count").html(count + " items left")
+}
 
-// Owl Carousel
-jQuery(document).ready(function($) {
-    $('.owl-carousel').owlCarousel({
-        loop:true,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-                nav:true
-            }
-        },
-        dots:false,
-        navText: ["<img src='images/icon-angle-left.svg'>","<img src='images/icon-angle-right.svg'>"],
-        smartSpeed: 1000,
 
+// Click on X to delete the task item
+$(".all_tasks").on('click', ".delete_btn", function (e) {
+    e.stopPropagation();
+    $(this).closest(".task").fadeOut(400, function () {
+        $(this).remove();
+        updateCount();
     });
 });
+
+// Click on clear completed button to Delete all completed tasks 
+$(".clear_btn").click(function () {
+    console.log("clear btn");
+    $(".task.checked").fadeOut(400, function () {
+        $(this).remove();
+    });
+});
+
+// click on the filter options to filter tasks by: all, active, completed
+$("#showAll").click(function () {
+    $(".task").show();
+});
+
+$("#showActive").click(function () {
+    $(".task.checked").hide();
+    $(".task.active").show();
+});
+
+$("#showCompleted").click(function () {
+    $(".task.active").hide();
+    $(".task.checked").show();
+});
+
+//Add new todos
+$("input[type='text']").keypress(function (e) {
+    if (e.which === 13) {
+        //grab text
+        var todoText = $(this).val();
+        //append todotext to ul
+
+        const newTaskHtml = '<div class="task item active"><input class="checkbox" type="checkbox" maxlength="200"/><p>' + todoText + '</p><button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button></div>';
+
+        if ($(this).val() !== "") {
+            $(".all_tasks").append(newTaskHtml);
+        }
+        updateCount();
+        //clear text
+        $(this).val("");
+    }
+});
+
+// Check off Specific task By Clicking
+$(".all_tasks").on("click", ".task", function () {
+    const task = $(this)
+    const checkbox = (this).children('.checkbox').prop( "checked", true );
+    $(this).toggleClass("active checked");
+});
+
+
+// $(".all_tasks").on("change", ".checkbox", function () {
+//     console.log(this);
+//     console.log(this.checked);
+
+//     if(this.checked) {
+//         $(this).parent().toggleclass("active checked");
+
+//         // $(this).parent().find('.task').toggleclass("active checked");
+//     }
+// });
