@@ -39,9 +39,16 @@
 
       <div class="app__header flex flex-d-r flex-jc-sb flex-ai-b">
         <h1>TODO</h1>
-        <button class="toggle"><img src="/images/icon-moon.svg" alt="Toggle to dark mode"></button>
-        <button class="toggle"><img src="/images/icon-sun.svg" alt="Toggle to light mode"></button>
+
+        <div class="toggle__wrapper">
+          <button onclick="setDarkMode()" id="dark" class="toggle-theme" title="Dark mode"><img src="/images/icon-moon.svg"
+              alt="Dark mode"></button>
+          <button onclick="setLightMode()" id="light" class="toggle-theme" title="Light mode"><img src="/images/icon-sun.svg"
+              alt="Light mode"></button>
+        </div>
+
       </div>
+
 
       <div class="app__tasks">
         <div id="add_task" class="item border-r-all">
@@ -51,22 +58,23 @@
 
         <div class="all_tasks">
           <div class="task item checked">
-            <input class="checkbox" type="checkbox" maxlength="200"/>
-            <p>Complete Online JavaScript Course and Do the homeworks afterwards, This is a long task I need it to be even longer</p>
+            <input class="checkbox" type="checkbox" maxlength="200" />
+            <p>Complete Online JavaScript Course and Do the homeworks afterwards, This is a long task I need it to be
+              even longer</p>
             <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
           <div class="task item active">
-            <input class="checkbox" type="checkbox" maxlength="200"/>
+            <input class="checkbox" type="checkbox" maxlength="200" />
             <p>jog around the park 3x</p>
             <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
           <div class="task item checked">
-            <input class="checkbox" type="checkbox" maxlength="200"/>
+            <input class="checkbox" type="checkbox" maxlength="200" />
             <p>10 minutes meditation</p>
             <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
           <div class="task item active">
-            <input class="checkbox" type="checkbox" maxlength="200"/>
+            <input class="checkbox" type="checkbox" maxlength="200" />
             <p>Read for 1 Hour</p>
             <button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>
           </div>
