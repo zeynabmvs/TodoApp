@@ -31,16 +31,15 @@ Users should be able to:
 - Toggle light and dark mode
 - **Bonus**: Drag and drop to reorder items on the list
 
-### Screenshot
+### Screenshots
 
-![](./ScreenShotDark.png)
-![](./ScreenShotLight.png)
+![](./ScreenShotDark.png) ![](./ScreenShotLight.png)
 
 
 ### Links
 
 - Solution URL: [Solution on Github](https://github.com/zeynabmvs/TodoAppFEM)
-- Live Site URL: [Live Site]()
+- Live Site URL: [Live Site](https://todoappfem.pages.dev/#)
 
 ## My process
 
