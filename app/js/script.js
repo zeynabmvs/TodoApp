@@ -58,65 +58,52 @@ $("input[type='text']").keypress(function (e) {
     }
 });
 
-// Check off Specific task By Clicking
 $(".all_tasks").on("click", ".task", function () {
-    const task = $(this)
-    const checkbox = (this).children('.checkbox').prop("checked", true);
+    console.log($(this));
     $(this).toggleClass("active checked");
+    // const input = this.children[0]
+    // input.checked = input.checked ? false : true;
 });
 
 
-// $(".all_tasks").on("change", ".checkbox", function () {
-//     console.log(this);
-//     console.log(this.checked);
-
-//     if(this.checked) {
-//         $(this).parent().toggleclass("active checked");
-
-//         // $(this).parent().find('.task').toggleclass("active checked");
-//     }
-// });
-
-// console.log(localStorage.getItem('colorMode'));
-
-
+// Dark ligth Toggle
 const darkButton = document.getElementById('dark');
 const lightButton = document.getElementById('light');
 
 const setDarkMode = () => {
-  document.querySelector('body').classList = 'dark';
-  localStorage.setItem('colorMode', 'dark');
+    document.querySelector('body').classList = 'dark';
+    localStorage.setItem('colorMode', 'dark');
 };
 
 const setLightMode = () => {
-  document.querySelector('body').classList = 'light';
-  localStorage.setItem('colorMode', 'light');
+    document.querySelector('body').classList = 'light';
+    localStorage.setItem('colorMode', 'light');
 };
 
 const colorModeFromLocalStorage = () => {
-  return localStorage.getItem('colorMode');
+    return localStorage.getItem('colorMode');
 };
 
 const colorModeFromPreferences = () => {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches 
-              ? 'dark'
-              : 'light' // If preference is set or does not match anything (light is default)
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light' // If preference is set or does not match anything (light is default)
 };
 
 const loadAndUpdateColor = () => {
-  // local storage has precendence over the prefers-color-scheme
-  const color = colorModeFromLocalStorage() || colorModeFromPreferences();
+    // local storage has precendence over the prefers-color-scheme
+    const color = colorModeFromLocalStorage() || colorModeFromPreferences();
 
-  
-  color == 'dark' ? darkButton.click() : lightButton.click();
+
+    color == 'dark' ? darkButton.click() : lightButton.click();
 };
 
 // when the prefers-color-scheme changes, this event will be emitted
 // event reflects the media query, if it matches, the new color is dark, else it is light
 window.matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (event) => {
+    .addEventListener('change', (event) => {
         event.matches ? darkButton.click() : lightButton.click();
-      });
-      
+    });
+
 // Load the right color on startup - localStorage has precedence
 loadAndUpdateColor();
