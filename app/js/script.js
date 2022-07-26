@@ -47,7 +47,7 @@ $("input[type='text']").keypress(function (e) {
         var todoText = $(this).val();
         //append todotext to ul
 
-        const newTaskHtml = '<div class="task item active"><input class="checkbox" type="checkbox" maxlength="200"/><p>' + todoText + '</p><button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button></div>';
+        const newTaskHtml = '<div class="task item active"><input class="checkbox" type="checkbox" maxlength="200" onclick="checkItem()" /><p>' + todoText + '</p><button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button></div>';
 
         if ($(this).val() !== "") {
             $(".all_tasks").append(newTaskHtml);
@@ -58,11 +58,16 @@ $("input[type='text']").keypress(function (e) {
     }
 });
 
+function checkItem(){
+    
+}
+
 $(".all_tasks").on("click", ".task", function () {
     console.log($(this));
     $(this).toggleClass("active checked");
     // const input = this.children[0]
     // input.checked = input.checked ? false : true;
+    updateCount();
 });
 
 
