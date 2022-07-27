@@ -11,7 +11,6 @@ This is a solution to the [Todo app challenge on Frontend Mentor](https://www.fr
 - [My process](#my-process)
   - [Built with](#built-with)
   - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
 - [Author](#author)
 
 
@@ -51,16 +50,11 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 - SASS
-- [jQuery](https://jquery.com/) - jQuery
 
 
 ### Continued development
 
 - adding drag an drop feature for the tasks list
-
-### Useful resources
-
-- [Youtube tutorial for Toggle](https://www.youtube.com/watch?v=-3WV1CjeF10) -This 5 part tutorial helped me to build the dark/light toggle 
 
 ## Author
 
