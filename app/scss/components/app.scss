@@ -19,7 +19,7 @@
         min-height: rem(50);
     }
 
-    &__tasks {
+    &__main {
         // cursor: pointer;
 
         .task {
@@ -32,7 +32,7 @@
                 }
             }
 
-            &.checked {
+            &.completed {
                 text-decoration: line-through;
                 color: var(--text-inactive);
             }
@@ -90,7 +90,7 @@
             }
         }
     }
-    .filters {
+    &__filters {
         a {
             color: var(--text-inactive);
 

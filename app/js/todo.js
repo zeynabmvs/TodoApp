@@ -1,73 +1,70 @@
-updateCount();
-console.log(localStorage.getItem('colorMode'));
+// the array to hold todo Items
+let toDoItems = [];
+const list = document.querySelector('.app_tasks');
 
-// Function to count uncompleted items
-function updateCount(jQuery) {
-    let count = $(".all_tasks .active").length;
-    $(".items_count").html(count + " items left")
+function renderTodo(todo) {
+    const item = document.querySelector(`[data-key='${todo.id}']`);
+    const isActive = todo.completed ? 'completed' : 'active';
+    const node = document.createElement("div");
+    node.setAttribute('class', 'task item ' + isActive);
+    node.setAttribute('data-key', todo.id);
+    node.innerHTML = `
+    <input id="${todo.id}" class="checkbox js-check ${isActive}" type="checkbox" maxlength="200" ><p>${todo.text}</p><button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>`;
+
+    if (item) {
+        list.replaceChild(node, item);
+    } else {
+        list.append(node);
+    }
 }
 
+function addTodo(text) {
+    const todo = {
+        text,
+        completed: false,
+        id: Date.now()
+    };
 
-// Click on X to delete the task item
-$(".all_tasks").on('click', ".delete_btn", function (e) {
-    e.stopPropagation();
-    $(this).closest(".task").fadeOut(400, function () {
-        $(this).remove();
-        updateCount();
-    });
-});
+    toDoItems.push(todo);
 
-// Click on clear completed button to Delete all completed tasks 
-$(".clear_btn").click(function () {
-    console.log("clear btn");
-    $(".task.checked").fadeOut(400, function () {
-        $(this).remove();
-    });
-});
+    return todo;
+}
 
-// click on the filter options to filter tasks by: all, active, completed
-$("#showAll").click(function () {
-    $(".task").show();
-});
+function toggleCompleted(key) {
+    // findIndex is an array method that returns the position of an element
+    // in the array.
+    const index = toDoItems.findIndex(item => item.id === Number(key));
 
-$("#showActive").click(function () {
-    $(".task.checked").hide();
-    $(".task.active").show();
-});
+    // Locate the todo item in the toDoItems array and set its checked
+    // property to the opposite. That means, `true` will become `false` and vice
+    // versa.
+    toDoItems[index].completed = !toDoItems[index].completed;
+    // console.log(toDoItems[index].completed);
+    renderTodo(toDoItems[index]);
+}
 
-$("#showCompleted").click(function () {
-    $(".task.active").hide();
-    $(".task.checked").show();
-});
-
-//Add new todos
+// type todo and press Enter to add it to bottom of list
 $("input[type='text']").keypress(function (e) {
     if (e.which === 13) {
+
         //grab text
-        var todoText = $(this).val();
-        //append todotext to ul
+        const text = $(this).val();
 
-        const newTaskHtml = '<div class="task item active"><input class="checkbox" type="checkbox" maxlength="200" onclick="checkItem()" /><p>' + todoText + '</p><button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button></div>';
+        todo = addTodo(text);
+        renderTodo(todo);
 
-        if ($(this).val() !== "") {
-            $(".all_tasks").append(newTaskHtml);
-        }
-        updateCount();
+        // updateCount();
+
         //clear text
         $(this).val("");
     }
 });
 
-function checkItem(){
-    
-}
+// click on the checkbox to check the item as completed
 
-$(".all_tasks").on("click", ".task", function () {
-    console.log($(this));
-    $(this).toggleClass("active checked");
-    // const input = this.children[0]
-    // input.checked = input.checked ? false : true;
-    updateCount();
+list.addEventListener('click', event => {
+    if (event.target.classList.contains('js-check')) {
+        const itemKey = event.target.parentElement.dataset.key;
+        toggleCompleted(itemKey);
+    }
 });
-
-
