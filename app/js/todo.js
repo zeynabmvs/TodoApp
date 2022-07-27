@@ -9,7 +9,7 @@ function renderTodo(todo) {
     node.setAttribute('class', 'task item ' + isActive);
     node.setAttribute('data-key', todo.id);
     node.innerHTML = `
-    <input id="${todo.id}" class="checkbox js-check ${isActive}" type="checkbox" maxlength="200" ><p>${todo.text}</p><button class="delete_btn"><img src="/images/icon-cross.svg" alt="Delete task"></button>`;
+    <input id="${todo.id}" class="checkbox js-check ${isActive}" type="checkbox" maxlength="200" ><p>${todo.text}</p><button class="delete_btn js-delete-task"></button>`;
 
     if (item) {
         list.replaceChild(node, item);
@@ -26,7 +26,6 @@ function addTodo(text) {
     };
 
     toDoItems.push(todo);
-
     return todo;
 }
 
@@ -42,10 +41,18 @@ function toggleCompleted(key) {
     renderTodo(toDoItems[index]);
 }
 
+function deleteTodo(key) {
+    item = document.querySelector(`div[data-key="${key}"]`)
+
+    // remove from todo array
+    toDoItems = toDoItems.filter(item => item.id !== Number(key));
+    // remove from DOM
+    item.remove();
+}
+
 // type todo and press Enter to add it to bottom of list
 $("input[type='text']").keypress(function (e) {
-    if (e.which === 13) {
-
+    if (e.which === 13 && $(this).val()) {
         //grab text
         const text = $(this).val();
 
@@ -59,11 +66,19 @@ $("input[type='text']").keypress(function (e) {
     }
 });
 
-// click on the checkbox to check the item as completed
-
 list.addEventListener('click', event => {
+    // click on the checkbox to check the item as completed
     if (event.target.classList.contains('js-check')) {
+        console.log('done');
+
         const itemKey = event.target.parentElement.dataset.key;
         toggleCompleted(itemKey);
+    }
+    console.log('hey')
+    // Click on the X button to delete task
+    if (event.target.classList.contains('js-delete-task')) {
+        console.log('delete');
+        const itemKey = event.target.parentElement.dataset.key;
+        deleteTodo(itemKey);
     }
 });

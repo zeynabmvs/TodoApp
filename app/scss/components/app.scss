@@ -44,9 +44,17 @@
             .delete_btn {
                 float: right;
                 margin-left: auto;
+                position: relative;
 
                 @include breakpoint(medium) {
                     opacity: 0;
+                }
+
+                &:before {
+                    content: url('/images/icon-cross.svg');
+                    position: absolute;
+                    top: rem(-10);
+                    right: 0;
                 }
             }
 
