@@ -7,6 +7,10 @@ function updateItemsCount() {
     document.querySelector('.items_count').innerHTML = count.toString()+" items left";
 }
 
+function updateLocalStorage(){
+    localStorage.setItem('todoItemsRef', JSON.stringify(toDoItems));
+}
+
 
 function renderTodo(todo) {
     const item = document.querySelector(`[data-key='${todo.id}']`);
@@ -33,6 +37,7 @@ function addTodo(text) {
 
     toDoItems.push(todo);
     updateItemsCount();
+    updateLocalStorage()
     return todo;
 }
 
@@ -47,6 +52,7 @@ function toggleCompleted(key) {
     toDoItems[index].completed = !toDoItems[index].completed;
     renderTodo(toDoItems[index]);
     updateItemsCount();
+    updateLocalStorage();
 }
 
 function deleteTodo(key) {
@@ -57,6 +63,7 @@ function deleteTodo(key) {
     // remove from DOM
     item.remove();
     updateItemsCount();
+    updateLocalStorage();
 }
 
 // type todo and press Enter to add it to bottom of list
@@ -68,7 +75,7 @@ $("input[type='text']").keypress(function (e) {
         todo = addTodo(text);
         renderTodo(todo);
 
-        updateItemsCount();
+        // updateItemsCount();
 
         //clear text
         $(this).val("");
@@ -93,7 +100,7 @@ document.querySelector('.clear_btn').addEventListener('click', event => {
     toDoItems = toDoItems.filter(obj => {
         return !obj.completed;
     });
-    console.log(toDoItems);
+    updateLocalStorage();
 });
 
 // click on the filter options to filter tasks by: all, active, completed
@@ -113,3 +120,13 @@ filters.addEventListener('click', event => {
 });
 
 updateItemsCount();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const ref = localStorage.getItem('todoItemsRef');
+    if (ref) {
+      toDoItems = JSON.parse(ref);
+      toDoItems.forEach(t => {
+        renderTodo(t);
+      });
+    }
+  });
