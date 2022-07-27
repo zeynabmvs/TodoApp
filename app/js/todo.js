@@ -4,10 +4,10 @@ const list = document.querySelector('.app_tasks');
 
 function updateItemsCount() {
     let count = document.querySelectorAll('div.task.active').length;
-    document.querySelector('.items_count').innerHTML = count.toString()+" items left";
+    document.querySelector('.items_count').innerHTML = count.toString() + " items left";
 }
 
-function updateLocalStorage(){
+function updateLocalStorage() {
     localStorage.setItem('todoItemsRef', JSON.stringify(toDoItems));
 }
 
@@ -37,7 +37,7 @@ function addTodo(text) {
 
     toDoItems.push(todo);
     updateItemsCount();
-    updateLocalStorage()
+    updateLocalStorage();
     return todo;
 }
 
@@ -75,7 +75,7 @@ $("input[type='text']").keypress(function (e) {
         todo = addTodo(text);
         renderTodo(todo);
 
-        // updateItemsCount();
+        updateItemsCount();
 
         //clear text
         $(this).val("");
@@ -119,14 +119,14 @@ filters.addEventListener('click', event => {
 
 });
 
-updateItemsCount();
-
 document.addEventListener('DOMContentLoaded', () => {
     const ref = localStorage.getItem('todoItemsRef');
     if (ref) {
-      toDoItems = JSON.parse(ref);
-      toDoItems.forEach(t => {
-        renderTodo(t);
-      });
+        toDoItems = JSON.parse(ref);
+        toDoItems.forEach(t => {
+            renderTodo(t);
+        });
     }
-  });
+    updateItemsCount();
+
+});
