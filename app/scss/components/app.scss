@@ -19,7 +19,7 @@
         min-height: rem(50);
     }
 
-    &__tasks {
+    &__main {
         // cursor: pointer;
 
         .task {
@@ -32,7 +32,7 @@
                 }
             }
 
-            &.checked {
+            &.completed {
                 text-decoration: line-through;
                 color: var(--text-inactive);
             }
@@ -44,9 +44,17 @@
             .delete_btn {
                 float: right;
                 margin-left: auto;
+                position: relative;
 
                 @include breakpoint(medium) {
                     opacity: 0;
+                }
+
+                &:before {
+                    content: url('/images/icon-cross.svg');
+                    position: absolute;
+                    top: rem(-10);
+                    right: 0;
                 }
             }
 
@@ -90,18 +98,19 @@
             }
         }
     }
-    .filters {
+    &__filters {
         a {
             color: var(--text-inactive);
 
             &:hover {
                 color: var(--text-active);
             }
-
-            &:nth-of-type(1){
+            
+            &:focus {
                 color: var(--bright-blue)
-            }
 
+            }
+            
             &:not(:last-child) {
                 margin-right: rem(15);
             }
