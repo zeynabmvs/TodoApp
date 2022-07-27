@@ -105,11 +105,12 @@
             &:hover {
                 color: var(--text-active);
             }
-
-            &:nth-of-type(1){
+            
+            &:focus {
                 color: var(--bright-blue)
-            }
 
+            }
+            
             &:not(:last-child) {
                 margin-right: rem(15);
             }

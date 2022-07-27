@@ -2,6 +2,12 @@
 let toDoItems = [];
 const list = document.querySelector('.app_tasks');
 
+function updateItemsCount() {
+    let count = document.querySelectorAll('div.task.active').length;
+    document.querySelector('.items_count').innerHTML = count.toString()+" items left";
+}
+
+
 function renderTodo(todo) {
     const item = document.querySelector(`[data-key='${todo.id}']`);
     const isActive = todo.completed ? 'completed' : 'active';
@@ -26,6 +32,7 @@ function addTodo(text) {
     };
 
     toDoItems.push(todo);
+    updateItemsCount();
     return todo;
 }
 
@@ -39,6 +46,7 @@ function toggleCompleted(key) {
     // versa.
     toDoItems[index].completed = !toDoItems[index].completed;
     renderTodo(toDoItems[index]);
+    updateItemsCount();
 }
 
 function deleteTodo(key) {
@@ -48,6 +56,7 @@ function deleteTodo(key) {
     toDoItems = toDoItems.filter(item => item.id !== Number(key));
     // remove from DOM
     item.remove();
+    updateItemsCount();
 }
 
 // type todo and press Enter to add it to bottom of list
@@ -59,7 +68,7 @@ $("input[type='text']").keypress(function (e) {
         todo = addTodo(text);
         renderTodo(todo);
 
-        // updateCount();
+        updateItemsCount();
 
         //clear text
         $(this).val("");
@@ -69,16 +78,38 @@ $("input[type='text']").keypress(function (e) {
 list.addEventListener('click', event => {
     // click on the checkbox to check the item as completed
     if (event.target.classList.contains('js-check')) {
-        console.log('done');
-
         const itemKey = event.target.parentElement.dataset.key;
         toggleCompleted(itemKey);
     }
-    console.log('hey')
     // Click on the X button to delete task
     if (event.target.classList.contains('js-delete-task')) {
-        console.log('delete');
         const itemKey = event.target.parentElement.dataset.key;
         deleteTodo(itemKey);
     }
 });
+
+document.querySelector('.clear_btn').addEventListener('click', event => {
+    document.querySelectorAll('.task.completed').forEach(e => e.remove());
+    toDoItems = toDoItems.filter(obj => {
+        return !obj.completed;
+    });
+    console.log(toDoItems);
+});
+
+// click on the filter options to filter tasks by: all, active, completed
+filters = document.querySelector('.app__filters');
+
+filters.addEventListener('click', event => {
+    if (event.target.id == 'showAll') {
+        $(".task").show();
+    } else if (event.target.id == 'showActive') {
+        $(".task.completed").hide();
+        $(".task.active").show();
+    } else if (event.target.id == 'showCompleted') {
+        $(".task.active").hide();
+        $(".task.completed").show();
+    }
+
+});
+
+updateItemsCount();
