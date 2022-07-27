@@ -39,7 +39,6 @@ function toggleCompleted(key) {
     // property to the opposite. That means, `true` will become `false` and vice
     // versa.
     toDoItems[index].completed = !toDoItems[index].completed;
-    // console.log(toDoItems[index].completed);
     renderTodo(toDoItems[index]);
 }
 
